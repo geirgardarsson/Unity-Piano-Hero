@@ -1,0 +1,10 @@
+Library/
+ProjectSettings/
+Temp/
+UnityPackageManager/
+.vscode/
+Piano.sln
+New Unity Project2.sln
+Assembly-CSharp.csproj
+
+Assets/Sounds/
