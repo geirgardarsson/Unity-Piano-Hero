@@ -3,34 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-
 public class pianoKey : MonoBehaviour {
 
 
-	AudioSource note;
-	float interval = 1;
+	private AudioSource note;
 	
-	// Twelfth root of two, the 'correct' interval between notes
-	private float twRootOf2 = Mathf.Pow(2, 1f /12f);
 
-	// Use this for initialization
-	void Start () {
-
-		if (this.gameObject.tag == "KeyBlack") {
-			this.gameObject.GetComponent<Renderer>().material.color = Color.black;
-		}
+	void Awake() {
 		note = GetComponent<AudioSource>();
-		Debug.Log("x: " + twRootOf2);
 	}
 
-	// Update is called once per frame
+
 	void Update () {
 
 	}
 
+
+	public void setPitch(float p) {
+		this.note.pitch = p;
+	}
+
+
 	void OnMouseDown() {
-		Debug.Log(note.pitch);
-		note.pitch *= twRootOf2;
 		note.Play();
 	}
 

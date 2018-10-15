@@ -8,3 +8,7 @@ New Unity Project2.sln
 Assembly-CSharp.csproj
 
 Assets/Sounds/
+Assets/Midi/
+
+*.meta
+*.swp
