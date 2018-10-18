@@ -19,6 +19,11 @@ public class pianoKey : MonoBehaviour {
 	}
 
 
+	public void setAudioClip(AudioClip newClip) {
+		this.note.clip = newClip;
+	}
+
+
 	public void setPitch(float p) {
 		this.note.pitch = p;
 	}
@@ -26,6 +31,15 @@ public class pianoKey : MonoBehaviour {
 
 	void OnMouseDown() {
 		note.Play();
+		SignalCamera();
+	}
+
+
+	void SignalCamera() {
+		float xpos = GetComponent<Transform>().position[0];
+
+		Camera cam = Camera.main;
+		cam.GetComponent<CameraController>().Signal(xpos);
 	}
 
 }
