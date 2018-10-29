@@ -5,14 +5,12 @@ using UnityEngine;
 public class SongControl : MonoBehaviour {
 
 	[SerializeField]
-	[Range(5f, 700f)]
+	[Range(5f, 80f)]
 	public float tempo = 20f;
 
-	private Transform transform;
-	private List<GameObject> bars = new List<GameObject>();
 
 	void Awake() {
-		transform = GetComponent<Transform>();
+
 	}
 	
 	void Update () {

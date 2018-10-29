@@ -5,15 +5,16 @@ using UnityEngine;
 public class BarControl : MonoBehaviour {
 
 	private Transform t;
-	private float startPosition = 60f;
 	[SerializeField]
-	[Range(5f, 70f)]
+	private float startPosition;
 	private float speed = 0f;
 	private bool play = false;
 
 	// Use this for initialization
 	void Start () {
 		t = GetComponent<Transform>();
+		Transform parent = t.parent.GetComponent<Transform>();
+		startPosition = parent.localScale[1];
 		play = true;
 	}
 	
