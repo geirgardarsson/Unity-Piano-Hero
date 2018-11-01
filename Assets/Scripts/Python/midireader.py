@@ -28,7 +28,7 @@ for track in song:
 
         elif note.name == 'Note Off':
             notes.append({
-                'pitch': note.pitch,
+                'notenumber': note.pitch,
                 'start': open_notes[note.pitch],
                 'end': note.tick
             })
@@ -40,6 +40,11 @@ for track in song:
 
     tracks.append(notes)
 
+
+tracks = [notempty for notempty in tracks if notempty]
+
+for track in tracks:
+    track.sort(key=lambda a: a['start'])
 
 json_song = {
     'name': args.midi_file.split('.')[0],
@@ -60,9 +65,9 @@ for info in song[0]:
     if info.name == "Set Tempo":
         json_song["tempo"] = info.data
 
+location = '../../json/'
 
-
-with open(args.midi_file.split('.')[0] + '.json', "w") as outfile:
+with open(location + args.midi_file.split('.')[0] + '.json', "w") as outfile:
     json.dump(json_song, outfile)
 
 
