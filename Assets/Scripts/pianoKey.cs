@@ -33,6 +33,7 @@ public class pianoKey : MonoBehaviour {
 		note.Play();
 		SignalCamera();
 	}
+	
 
 
 	void SignalCamera() {
