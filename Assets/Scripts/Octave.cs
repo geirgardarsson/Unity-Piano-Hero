@@ -38,8 +38,4 @@ public class Octave : MonoBehaviour {
 		InitKeys();
 	}
 
-
-	void Update () {
-		
-	}
 }

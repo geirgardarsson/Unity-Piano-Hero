@@ -9,10 +9,9 @@ public class Bar: MonoBehaviour {
 	private Vector3 startPosition = new Vector3(21.45f, 60f, 0.2f);
 	private Vector3 startScale = new Vector3(53.8f, 0.75f, 0.2f);
 
-	private float speed;
-
 	private GameObject control;
 
+	private float speed;
 	private float startTime;
 
 

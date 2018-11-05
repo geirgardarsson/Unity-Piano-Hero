@@ -24,15 +24,13 @@ public class NoteModel : MonoBehaviour {
 		t = GetComponent<Transform>();
 		r = GetComponent<MeshRenderer>();
 
-		Debug.Log(r.material);
-
 		r.material.color = noteColors[
 			Random.Range(0, noteColors.Length - 1)
 		];
 
 		startTime = Time.time;
 
-		t.localScale = startScale;
+		t.position += new Vector3(0f, t.localScale[1]/2f, 0f);
 
 		control = GameObject.Find("SongBoard");
 		speed = control.GetComponent<SongControl>().tempo / 4f;
@@ -43,7 +41,7 @@ public class NoteModel : MonoBehaviour {
 		speed = control.GetComponent<SongControl>().tempo / 4f;
 		t.position += speed * Vector3.down * Time.deltaTime;
 
-		if (t.position[1] < 0) {
+		if (t.position[1] + (t.localScale[1] / 2) < 0) {
 			Destroy(this.gameObject);
 		}
 

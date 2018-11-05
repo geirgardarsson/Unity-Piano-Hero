@@ -5,17 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class pianoKey : MonoBehaviour {
 
-
 	private AudioSource note;
-	
+
 
 	void Awake() {
 		note = GetComponent<AudioSource>();
-	}
-
-
-	void Update () {
-
 	}
 
 

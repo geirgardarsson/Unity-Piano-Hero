@@ -6,20 +6,13 @@ using System.IO;
 
 public class SongControl : MonoBehaviour {
 
-	[SerializeField]
-	[Range(30f, 240f)]
-	public float tempo = 40f;
-	private string filePath;
+	public float tempo = 60f;
 	
 	[SerializeField]
 	private Song song;
-
-	private Dictionary<int, float> noteNumberToX = new Dictionary<int, float>();
-
 	private GameObject note;
-	private GameObject bar;
-
-	private float actiontime = 0f;
+	private Dictionary<int, float> noteNumberToX = new Dictionary<int, float>();
+	
 
 	[Serializable]
 	public class Note {
@@ -69,7 +62,7 @@ public class SongControl : MonoBehaviour {
 	}
 
 
-	private void initNoteNumbers() {
+	private void InitNoteNumbers() {
 
 		float xcoord = -5f;
 		int firstnote = 24;
@@ -88,6 +81,14 @@ public class SongControl : MonoBehaviour {
 				xcoord += 0.55f;
 			}
 		}
+	}
+
+
+	private void UnpackJson(string songName) {
+
+		string filePath = Application.dataPath + "/Resources/Json/";
+		string json = File.ReadAllText(filePath + songName);
+		this.song = JsonUtility.FromJson<Song>(json);
 	}
 
 
@@ -117,36 +118,17 @@ public class SongControl : MonoBehaviour {
 				),
 				new Quaternion(0f,0f,0f,0f)
 			);
-
 		}
 	}
 
 
 	void Awake() {
-		initNoteNumbers();
-
-		filePath = Application.dataPath + "/Resources/Json/";
+		InitNoteNumbers();
 
 		string songName = "Colosso.json";
-		string json = File.ReadAllText(filePath + songName);
-
-		this.song = JsonUtility.FromJson<Song>(json);
-
-		this.bar = (GameObject)Resources.Load("Bar", typeof(GameObject));
-
+		UnpackJson(songName);
+		
 		LoadSongToGame();
-	}
-
-
-
-
-	void Update () {
-
-		if (Time.time > actiontime) {
-			actiontime += RateFromTempo(tempo);
-
-			Instantiate(bar);
-		}
 	}
 
 }

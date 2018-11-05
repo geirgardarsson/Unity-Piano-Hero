@@ -60,11 +60,4 @@ public class Piano : MonoBehaviour {
 		initOctives();
 	}
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
 }
