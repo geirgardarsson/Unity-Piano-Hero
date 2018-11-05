@@ -88,7 +88,6 @@ public class SongControl : MonoBehaviour {
 				xcoord += 0.55f;
 			}
 		}
-
 	}
 
 
@@ -114,7 +113,13 @@ public class SongControl : MonoBehaviour {
 		if (Time.time > actiontime) {
 			actiontime += RateFromTempo(tempo);
 
-			Instantiate(bar);
+			//Instantiate(bar);
+
+			Instantiate(
+				note,
+				new Vector3(UnityEngine.Random.Range(10f,40f),60f, 0.38f),
+				new Quaternion(0f,0f,0f,0f)
+			);
 		}
 	}
 
