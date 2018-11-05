@@ -8,7 +8,7 @@ public class SongControl : MonoBehaviour {
 
 	[SerializeField]
 	[Range(30f, 240f)]
-	public float tempo = 120f;
+	public float tempo = 40f;
 	private string filePath;
 	
 	[SerializeField]
@@ -91,6 +91,37 @@ public class SongControl : MonoBehaviour {
 	}
 
 
+	private void LoadSongToGame() {
+		
+		this.note = (GameObject)Resources.Load("Note", typeof(GameObject));
+		Track track = song.tracks[0];
+
+		float startPos = 60f;
+
+		foreach (Note n in track.notes) {
+
+			float xcoord = noteNumberToX[n.notenumber];
+			float ycoord = startPos + (n.start / 60);
+			float zcoord = 0.38f;
+
+			float len = (n.end - n.start) / 60;
+
+			note.GetComponent<Transform>().localScale = new Vector3(0.8f, len, 1f);
+
+			Instantiate(
+				note,
+				new Vector3(
+					xcoord,
+					ycoord,
+					zcoord
+				),
+				new Quaternion(0f,0f,0f,0f)
+			);
+
+		}
+	}
+
+
 	void Awake() {
 		initNoteNumbers();
 
@@ -102,7 +133,8 @@ public class SongControl : MonoBehaviour {
 		this.song = JsonUtility.FromJson<Song>(json);
 
 		this.bar = (GameObject)Resources.Load("Bar", typeof(GameObject));
-		this.note = (GameObject)Resources.Load("Note", typeof(GameObject));
+
+		LoadSongToGame();
 	}
 
 
@@ -113,13 +145,7 @@ public class SongControl : MonoBehaviour {
 		if (Time.time > actiontime) {
 			actiontime += RateFromTempo(tempo);
 
-			//Instantiate(bar);
-
-			Instantiate(
-				note,
-				new Vector3(UnityEngine.Random.Range(10f,40f),60f, 0.38f),
-				new Quaternion(0f,0f,0f,0f)
-			);
+			Instantiate(bar);
 		}
 	}
 

@@ -113,48 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &9275219
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 25.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.38000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683622660083238, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6e2c65c3cfb05416d87a95c25eea51c3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &141742779
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6f7277991d444ee8e9b11707f35737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 71
+  tempo: 120
   song:
     name: 
     tempo: 

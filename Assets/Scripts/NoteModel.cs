@@ -5,14 +5,31 @@ using UnityEngine;
 public class NoteModel : MonoBehaviour {
 
 	private Transform t;
+	private MeshRenderer r;
 
 	private GameObject control;
 	private Vector3 startScale = new Vector3(0.8f, 3f, 1f);
 	private float startTime;
 	private float speed;
 
+	Color32[] noteColors = new Color32[5] {
+		new Color32(255, 191,   0, 1),
+		new Color32(153, 102, 204, 1),
+		new Color32(222,  49,  99, 1),
+		new Color32( 80, 200, 120, 1),
+		new Color32( 66, 134, 244, 1)
+	};
+
 	void Start () {
 		t = GetComponent<Transform>();
+		r = GetComponent<MeshRenderer>();
+
+		Debug.Log(r.material);
+
+		r.material.color = noteColors[
+			Random.Range(0, noteColors.Length - 1)
+		];
+
 		startTime = Time.time;
 
 		t.localScale = startScale;
