@@ -1,4 +1,4 @@
-# Unity-Project-Piano
+# Unity-Piano-Hero
 
 A Unity project to make a Guitar-Hero like game, with a piano.
 

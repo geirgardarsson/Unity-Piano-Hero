@@ -6,10 +6,15 @@ using UnityEngine;
 public class pianoKey : MonoBehaviour {
 
 	private AudioSource note;
+	private Transform t;
+	private Vector3 halfLength;
+	private Vector3 startPosition;
 
-
-	void Awake() {
+	void Start() {
 		note = GetComponent<AudioSource>();
+		t = GetComponent<Transform>();
+		startPosition = t.position;
+		halfLength = new Vector3(0f, t.localScale[1] * 2, 2f);
 	}
 
 
@@ -23,9 +28,25 @@ public class pianoKey : MonoBehaviour {
 	}
 
 
+	private void RotateSelf(float dir) {
+		t.RotateAround(
+			t.position + halfLength,
+			Vector3.right,
+			dir * 3f
+		);
+	}
+
+
 	void OnMouseDown() {
+		RotateSelf(-1);
 		note.Play();
 		SignalCamera();
+	}
+
+
+	void OnMouseUp() {
+		RotateSelf(1);
+		t.position = startPosition;
 	}
 	
 
