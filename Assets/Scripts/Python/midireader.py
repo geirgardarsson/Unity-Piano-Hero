@@ -48,19 +48,10 @@ json_song = {
     'tracks': tracks
 }
 
-'''
-60 bpm = 1 beat per second = 1000000 microseconds per beat
-
-Tempo events are expressed in microseconds, so your event
-should have a value of 1 million. But the data array uses
-8-bit words, so this number gets split up by powers of 256:
-
-1000000 = (15 * 256^2) + (66 * 256) + (64) = [15, 66, 64]
-'''
 
 for info in song[0]:
     if info.name == "Set Tempo":
-        json_song["tempo"] = info.data
+        json_song["tempo"] = int(info.get_bpm())
 
 location = '../../Resources/Json/'
 
