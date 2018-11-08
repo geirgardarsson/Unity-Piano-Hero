@@ -6,6 +6,7 @@ public class NoteModel : MonoBehaviour {
 	private MeshRenderer r;
 
 	private GameObject control;
+	private GameObject piano;
 	private float speed;
 	private float halfLength;
 	private bool hasHit = false;
@@ -27,6 +28,8 @@ public class NoteModel : MonoBehaviour {
 
 
 	void Start () {
+		piano = GameObject.Find("/Piano");
+
 		t = GetComponent<Transform>();
 		r = GetComponent<MeshRenderer>();
 
@@ -49,7 +52,7 @@ public class NoteModel : MonoBehaviour {
 
 		if (t.position[1] - halfLength + hitOffset < 0 && !hasHit) {
 			hasHit = true;
-			Debug.Log(noteNumber);
+			piano.GetComponent<Piano>().PlayNote(noteNumber);
 		}
 
 		if (t.position[1] + halfLength + hitOffset < 0) {

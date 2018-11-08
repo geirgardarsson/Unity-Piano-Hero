@@ -33,6 +33,12 @@ public class Octave : MonoBehaviour {
 	}
 
 
+	public void PlayNote(int num) {
+		int keyNum = (num - 24) % 12;
+		keys[keyNum].GetComponent<pianoKey>().Play();
+	}
+
+
 	void Start() {
 		InitKeys();
 	}

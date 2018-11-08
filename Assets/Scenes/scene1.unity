@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6f7277991d444ee8e9b11707f35737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 60
+  tempo: 120
   song:
     name: 
     tempo: 
@@ -670,7 +670,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011079330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -3, z: 0}
+  m_LocalPosition: {x: -5, y: -3, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431855496}

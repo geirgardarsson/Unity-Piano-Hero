@@ -46,6 +46,14 @@ public class Piano : MonoBehaviour {
 		}
 	}
 
+
+	public void PlayNote(int num) {
+		int octaveNum = (num - 24) / 12;
+
+		octaves[octaveNum].GetComponent<Octave>().PlayNote(num);
+	}
+
+
 	private string TrimName(string filename) {
 		char[] delimimiters = { ' ' };
 		Regex r = new Regex(@"\d+");

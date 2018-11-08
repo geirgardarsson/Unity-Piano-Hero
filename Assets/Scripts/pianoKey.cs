@@ -27,12 +27,26 @@ public class pianoKey : MonoBehaviour {
 	}
 
 
+	public void Play() {
+		RotateSelf(-1);
+		note.Play();
+		SignalCamera();
+		Invoke("ResetSelf", 0.5f);
+	}
+
+
 	private void RotateSelf(float dir) {
 		t.RotateAround(
 			t.position + halfLength,
 			Vector3.right,
 			dir * pressRotation
 		);
+	}
+
+
+	private void ResetSelf() {
+		RotateSelf(1);
+		t.position = startPosition;
 	}
 
 
@@ -44,8 +58,7 @@ public class pianoKey : MonoBehaviour {
 
 
 	void OnMouseUp() {
-		RotateSelf(1);
-		t.position = startPosition;
+		ResetSelf();
 	}
 	
 
