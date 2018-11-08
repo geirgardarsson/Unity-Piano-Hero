@@ -6,6 +6,8 @@ using System.IO;
 
 public class SongControl : MonoBehaviour {
 
+	[SerializeField]
+	[Range(0, 240)]
 	public float tempo = 60f;
 	
 	[SerializeField]
@@ -108,16 +110,14 @@ public class SongControl : MonoBehaviour {
 			float len = (n.end - n.start) / 60;
 
 			note.GetComponent<Transform>().localScale = new Vector3(0.8f, len, 1f);
-
-			Instantiate(
+			
+			GameObject instance = Instantiate(
 				note,
-				new Vector3(
-					xcoord,
-					ycoord,
-					zcoord
-				),
+				new Vector3(xcoord,	ycoord,	zcoord),
 				new Quaternion(0f,0f,0f,0f)
 			);
+
+			instance.GetComponent<NoteModel>().SetNoteNumber(n.notenumber);
 		}
 	}
 
@@ -125,7 +125,7 @@ public class SongControl : MonoBehaviour {
 	void Awake() {
 		InitNoteNumbers();
 
-		string songName = "Colosso.json";
+		string songName = "invention.json";
 		UnpackJson(songName);
 		
 		LoadSongToGame();

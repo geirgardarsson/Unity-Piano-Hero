@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NoteModel : MonoBehaviour {
 
@@ -8,9 +6,11 @@ public class NoteModel : MonoBehaviour {
 	private MeshRenderer r;
 
 	private GameObject control;
-	private Vector3 startScale = new Vector3(0.8f, 3f, 1f);
-	private float startTime;
 	private float speed;
+	private float halfLength;
+	private bool hasHit = false;
+	private float hitOffset = 0.5f;
+	private int noteNumber;
 
 	Color32[] noteColors = new Color32[5] {
 		new Color32(255, 191,   0, 1),
@@ -20,15 +20,21 @@ public class NoteModel : MonoBehaviour {
 		new Color32( 66, 134, 244, 1)
 	};
 
+
+	public void SetNoteNumber(int i) {
+		this.noteNumber = i;
+	}
+
+
 	void Start () {
 		t = GetComponent<Transform>();
 		r = GetComponent<MeshRenderer>();
 
+		halfLength = (t.localScale[1] / 2f);
+
 		r.material.color = noteColors[
 			Random.Range(0, noteColors.Length - 1)
 		];
-
-		startTime = Time.time;
 
 		t.position += new Vector3(0f, t.localScale[1]/2f, 0f);
 
@@ -41,7 +47,12 @@ public class NoteModel : MonoBehaviour {
 		speed = control.GetComponent<SongControl>().tempo / 4f;
 		t.position += speed * Vector3.down * Time.deltaTime;
 
-		if (t.position[1] + (t.localScale[1] / 2) < 0) {
+		if (t.position[1] - halfLength + hitOffset < 0 && !hasHit) {
+			hasHit = true;
+			Debug.Log(noteNumber);
+		}
+
+		if (t.position[1] + halfLength + hitOffset < 0) {
 			Destroy(this.gameObject);
 		}
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class pianoKey : MonoBehaviour {
@@ -9,6 +7,7 @@ public class pianoKey : MonoBehaviour {
 	private Transform t;
 	private Vector3 halfLength;
 	private Vector3 startPosition;
+	private float pressRotation = 3f;
 
 	void Start() {
 		note = GetComponent<AudioSource>();
@@ -32,7 +31,7 @@ public class pianoKey : MonoBehaviour {
 		t.RotateAround(
 			t.position + halfLength,
 			Vector3.right,
-			dir * 3f
+			dir * pressRotation
 		);
 	}
 

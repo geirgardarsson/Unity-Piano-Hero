@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bar: MonoBehaviour {
 
@@ -17,7 +15,6 @@ public class Bar: MonoBehaviour {
 
 	void Start () {
 		t = GetComponent<Transform>();
-		startTime = Time.time;
 
 		t.position = startPosition;
 		t.localScale = startScale;
