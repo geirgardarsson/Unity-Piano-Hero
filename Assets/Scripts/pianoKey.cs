@@ -31,7 +31,7 @@ public class pianoKey : MonoBehaviour {
 		RotateSelf(-1);
 		note.Play();
 		SignalCamera();
-		Invoke("ResetSelf", 0.5f);
+		Invoke("ResetSelf", 0.2f);
 	}
 
 

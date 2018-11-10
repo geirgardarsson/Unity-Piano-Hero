@@ -11,8 +11,11 @@ public class CameraController : MonoBehaviour {
 	
 	[SerializeField]
 	[Range(5f, 50f)]
-	private float acceleration = 20f;
-	
+	private float sensitivity = 20f;
+
+	[SerializeField]
+	private float velocity;
+
 	private const float minX = -1f;
 	private const float maxX = 43.5f;
 
@@ -23,6 +26,8 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void Update () {
+		float pos = t.position[0] + 5f;
+
 		if (Input.GetButton("Horizontal")) {
 			followUser = false;
 
@@ -39,19 +44,20 @@ public class CameraController : MonoBehaviour {
 			}
 		}	
 
-		if (activex < t.position[0] && followUser) {
+		if (activex < pos && followUser) {
 
-			float velocity = 1f - (activex / t.position[0]);
+			velocity = 1f - (pos / (pos + (pos - activex)));
 			if (velocity < 0f) velocity = 0f;
 
-			Vector3 move = new Vector3(-acceleration * velocity, 0f, 0f);
+		Vector3 move = new Vector3(-sensitivity * velocity, 0f, 0f);
 			t.Translate(move * Time.deltaTime);
 		}
-		else if (activex > t.position[0] && followUser) {
+		else if (activex > pos && followUser) {
 			
-			float velocity = 1f - (t.position[0] / activex);
-			Vector3 move = new Vector3(acceleration * velocity, 0f, 0f);
-			t.Translate(move * Time.deltaTime);
+			velocity = 1f - (pos / (pos + (activex - pos)));
+
+			Vector3 move = new Vector3(sensitivity * velocity, 0f, 0f);
+				t.Translate(move * Time.deltaTime);
 		}
 
 		if (t.position[0] < minX) {
@@ -71,7 +77,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void Signal(float x) {
-		activex = x;
+		activex = x + 5f;
 		followUser = true;
 	}
 }

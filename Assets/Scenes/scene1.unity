@@ -176,10 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6f7277991d444ee8e9b11707f35737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempo: 120
+  tempo: 95
   song:
     name: 
-    tempo: 
+    tempo: 0
     tracks: []
 --- !u!33 &141742782
 MeshFilter:
@@ -663,6 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31681188dc68440149caccbab1176ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  octaves: []
 --- !u!4 &1011079332
 Transform:
   m_ObjectHideFlags: 0
@@ -853,6 +854,11 @@ Prefab:
       propertyPath: m_Name
       value: Octave (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 82579584326156516, guid: e580d3b62328449429dc19fcabaed6b9,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a2dd8bb6d27c4752927d9b0f89b029e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e580d3b62328449429dc19fcabaed6b9, type: 2}
   m_IsPrefabParent: 0

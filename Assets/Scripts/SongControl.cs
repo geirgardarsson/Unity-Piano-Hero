@@ -7,7 +7,7 @@ using System.IO;
 public class SongControl : MonoBehaviour {
 
 	[SerializeField]
-	[Range(0, 240)]
+	[Range(0, 200)]
 	public float tempo = 60f;
 	
 	[SerializeField]
@@ -47,11 +47,11 @@ public class SongControl : MonoBehaviour {
 	private class Song {
 
 		public string name;
-		public int[] tempo;
+		public int tempo;
 		[SerializeField]
 		public Track[] tracks;
 
-		public Song(string n, int[] te, Track[] tr) {
+		public Song(string n, int te, Track[] tr) {
 			name = n;
 			tempo = te;
 			tracks = tr;
@@ -95,6 +95,8 @@ public class SongControl : MonoBehaviour {
 
 
 	private void LoadSongToGame() {
+
+		this.tempo = (float)song.tempo / 2f;
 		
 		this.note = (GameObject)Resources.Load("Note", typeof(GameObject));
 		Track track = song.tracks[0];
@@ -109,15 +111,18 @@ public class SongControl : MonoBehaviour {
 
 			float len = (n.end - n.start) / 60;
 
-			note.GetComponent<Transform>().localScale = new Vector3(0.8f, len, 1f);
-			
-			GameObject instance = Instantiate(
-				note,
-				new Vector3(xcoord,	ycoord,	zcoord),
-				new Quaternion(0f,0f,0f,0f)
-			);
+			if (len < 50) {
 
-			instance.GetComponent<NoteModel>().SetNoteNumber(n.notenumber);
+				note.GetComponent<Transform>().localScale = new Vector3(0.8f, len, 1f);
+			
+				GameObject instance = Instantiate(
+					note,
+					new Vector3(xcoord,	ycoord,	zcoord),
+					new Quaternion(0f,0f,0f,0f)
+				);
+
+				instance.GetComponent<NoteModel>().SetNoteNumber(n.notenumber);
+			}
 		}
 	}
 
@@ -125,7 +130,7 @@ public class SongControl : MonoBehaviour {
 	void Awake() {
 		InitNoteNumbers();
 
-		string songName = "invention.json";
+		string songName = "17th_century_chicken_picking.json";
 		UnpackJson(songName);
 		
 		LoadSongToGame();
