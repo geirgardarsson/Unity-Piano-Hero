@@ -14,7 +14,7 @@ public class SongControl : MonoBehaviour {
 	private Song song;
 	private GameObject note;
 	private Dictionary<int, float> noteNumberToX = new Dictionary<int, float>();
-	
+
 
 	[Serializable]
 	public class Note {
@@ -73,10 +73,8 @@ public class SongControl : MonoBehaviour {
 		for (int i = firstnote; i < lastnote; i += 1) {
 			this.noteNumberToX.Add(i, xcoord);
 
-			/*
-			 * On every 5th and 12th note there is a big gap, 1.1,
-			 * otherwise a small gap 0.55
-			 */
+			// On every 5th and 12th note there is a big gap, 1.1,
+			// otherwise a small gap 0.55
 			if ((i - firstnote) % 12 == 4 || ((i - firstnote) % 12 == 11)) {
 				xcoord += 1.1f;
 			} else {
@@ -86,10 +84,16 @@ public class SongControl : MonoBehaviour {
 	}
 
 
+	public void SetSong(string n) {
+		UnpackJson(n + ".json");
+		LoadSongToGame();
+	}
+
+
 	private void UnpackJson(string songName) {
 
-		string filePath = Application.dataPath + "/Resources/Json/";
-		string json = File.ReadAllText(filePath + songName);
+		string path = Application.dataPath + "/Resources/Json/";
+		string json = File.ReadAllText(path + songName);
 		this.song = JsonUtility.FromJson<Song>(json);
 	}
 
@@ -129,11 +133,6 @@ public class SongControl : MonoBehaviour {
 
 	void Awake() {
 		InitNoteNumbers();
-
-		string songName = "17th_century_chicken_picking.json";
-		UnpackJson(songName);
-		
-		LoadSongToGame();
 	}
 
 }

@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('midi_file')
 
 args = parser.parse_args()
-args.midi_file = args.midi_file.split('/')[-1]
+args.midi_file = args.midi_file
 
 song = midi.read_midifile(args.midi_file)
 song.make_ticks_abs()
@@ -55,7 +55,8 @@ for info in song[0]:
         json_song["tempo"] = int(info.get_bpm())
 
 location = '../../Resources/Json/'
+name = args.midi_file.split('/')[-1]
 
-with open(location + args.midi_file.split('.')[0] + '.json', "w") as outfile:
+with open(location + name.split('.')[0] + '.json', "w") as outfile:
     json.dump(json_song, outfile)
 
