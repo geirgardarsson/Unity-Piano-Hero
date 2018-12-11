@@ -13,14 +13,11 @@ public class Octave : MonoBehaviour {
 
 	void InitKeys() {
 		soundFile = GetComponent<AudioSource>().clip;
-
 		int numKeys = this.transform.childCount;
-
 		pitch = this.pitchOffset;
 
 		for (int i = 0; i < numKeys; i++) {
 			keys.Add(this.gameObject.transform.GetChild(i).gameObject);
-
 			keys[i].GetComponent<pianoKey>().setPitch(pitch);
 			keys[i].GetComponent<pianoKey>().setAudioClip(soundFile);
 			pitch *= twRootOf2;

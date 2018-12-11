@@ -65,7 +65,6 @@ public class pianoKey : MonoBehaviour {
 
 	void SignalCamera() {
 		float xpos = GetComponent<Transform>().position[0];
-
 		Camera cam = Camera.main;
 		cam.GetComponent<CameraController>().Signal(xpos);
 	}

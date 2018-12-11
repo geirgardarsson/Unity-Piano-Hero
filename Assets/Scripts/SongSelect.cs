@@ -57,7 +57,8 @@ public class SongSelect : MonoBehaviour {
 		InitiateSongText();
 		nameobjects[0].GetComponent<SongText>().Activate();
 	}
-	
+
+
 	void Update () {
 
 		if (Input.GetKeyUp("up")) {

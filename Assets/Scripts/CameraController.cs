@@ -30,7 +30,6 @@ public class CameraController : MonoBehaviour {
 
 		if (Input.GetButton("Horizontal")) {
 			followUser = false;
-
 			float newpos = Input.GetAxisRaw("Horizontal");
 
 			if (newpos > 0) {
@@ -45,19 +44,18 @@ public class CameraController : MonoBehaviour {
 		}	
 
 		if (activex < pos && followUser) {
-
 			velocity = 1f - (pos / (pos + (pos - activex)));
 			if (velocity < 0f) velocity = 0f;
 
-		Vector3 move = new Vector3(-sensitivity * velocity, 0f, 0f);
+			Vector3 move = new Vector3(-sensitivity * velocity, 0f, 0f);
 			t.Translate(move * Time.deltaTime);
 		}
+
 		else if (activex > pos && followUser) {
-			
 			velocity = 1f - (pos / (pos + (activex - pos)));
 
 			Vector3 move = new Vector3(sensitivity * velocity, 0f, 0f);
-				t.Translate(move * Time.deltaTime);
+			t.Translate(move * Time.deltaTime);
 		}
 
 		if (t.position[0] < minX) {
