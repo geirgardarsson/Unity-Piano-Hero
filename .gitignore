@@ -9,6 +9,7 @@ Assembly-CSharp.csproj
 
 Assets/Sounds/
 Assets/Midi/
+Assets/TextMesh Pro/
 
 *.meta
 *.swp
